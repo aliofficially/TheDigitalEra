@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transport Management System - The Digital Era</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .slideshow-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .slide {
+            display: none;
+            padding: 40px;
+            min-height: 500px;
+        }
+        .slide.active {
+            display: block;
+        }
+        .title-slide {
+            background: linear-gradient(135deg, #5e35b1, #7e57c2);
+            color: white;
+            text-align: center;
+            padding: 80px 40px;
+        }
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #5e35b1;
+        }
+        .title-slide h1 {
+            font-size: 38px;
+            color: white;
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #5e35b1;
+        }
+        h3 {
+            font-size: 24px;
+            color: #7e57c2;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        p, li {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .subtitle {
+            font-size: 22px;
+            opacity: 0.9;
+            margin-bottom: 60px;
+        }
+        .company-logo {
+            width: 300px;
+            margin: 40px auto 0;
+            display: block;
+        }
+        .two-columns {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .column {
+            width: 48%;
+        }
+        .feature-box {
+            background-color: #f7f2ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #7e57c2;
+        }
+        .feature-box h4 {
+            margin-top: 0;
+            color: #5e35b1;
+        }
+        .feature-box p {
+            margin-bottom: 0;
+            font-size: 16px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 12px;
+        }
+        .highlight {
+            color: #5e35b1;
+            font-weight: bold;
+        }
+        .quote {
+            font-style: italic;
+            color: #555;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #7e57c2;
+            margin: 20px 0;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .navigation {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .nav-button {
+            background-color: #5e35b1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .nav-button:hover {
+            background-color: #7e57c2;
+        }
+        .slide-number {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        .timeline {
+            margin: 40px 0;
+            position: relative;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: #7e57c2;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            border: 2px solid #7e57c2;
+            top: 15px;
+            border-radius: 50%;
+        }
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .emphasis {
+            font-weight: bold;
+            color: #7e57c2;
+        }
+        .header-logo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 80px;
+        }
+        
+        /* Transition styles */
+        .transition-element {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .transition-element.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Make title slide elements visible by default */
+        .title-slide .transition-element {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <img class="header-logo" src="logo.png" alt="The Digital Era Logo">
+        <!-- Slide 1: Title Slide -->
+        <div class="slide title-slide active">
+            <h1 class="transition-element">Transport Management System</h1>
+            <div class="subtitle transition-element">Phase 1 Implementation Plan</div>
+            <img class="company-logo transition-element" src="logo.png" alt="The Digital Era Logo">
+            <p class="transition-element">Presented to Evertus Logistics</p>
+        </div>
+
+        <!-- Slide 2: The Digital Era Team -->
+        <div class="slide">
+            <h2 class="transition-element">The Digital Era: Your Oracle Technology Partner</h2>
+            
+            <div class="transition-element">
+                <h3>Our Oracle Expertise</h3>
+                <p>The Digital Era specializes in Oracle technologies with a focus on creating tailored solutions that deliver measurable business value. Our team is led by experts in the field, bringing over 15 years of combined Oracle implementation experience to your project.</p>
+                
+                <div class="feature-box">
+                    <h4>Core Competencies</h4>
+                    <ul>
+                        <li><span class="highlight">Oracle APEX</span> - APEX application development platform experts</li>
+                        <li><span class="highlight">Oracle Database</span> - Design, optimization, and management competencies</li>
+                        <li><span class="highlight">Oracle EBS/Netsuite</span> - Enterprise business applications implementation</li>
+                        <li><span class="highlight">Oracle Cloud Infrastructure</span> - Cloud-based business management solutions</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="transition-element">
+                <h3>Team Experience</h3>
+                <ul>
+                    <li>Specialized in database architecture for enterprise level companies</li>
+                    <li>Expert APEX developers focused on creating intuitive, responsive interfaces</li>
+                    <li>Quality assurance specialists ensuring system performance and security</li>
+                </ul>
+            
+            
+            <div class="feature-box">
+                <h4>Our Implementation Philosophy</h4>
+                <p>We believe in phased, pragmatic implementation that allows you to see value quickly while building toward a comprehensive solution. Our approach emphasizes:</p>
+                <ul>
+                    <li>Clear communication and transparent project management</li>
+                    <li>Focus on business outcomes rather than just technical specifications</li>
+                    <li>Building scalable systems that grow with your business needs</li>
+                </ul>
+            </div>
+</div>
+        </div>
+
+        <!-- Slide 3: Evertus Logistics Team Business -->
+        <div class="slide">
+            <h2 class="transition-element">Evertus Logistics: Business Process Owner</h2>
+            <div class="two-columns">
+                <div class="column">
+                    <div class="transition-element">
+                        <h3>Company Overview</h3>
+                        <p>Founded in March 2023 by <span class="highlight">Hector Marinez</span> and two other investors, Evertus Logistics is a <span class="highlight">fully licensed Supply-Chain, Transportation and Logistics Freight Brokerage</span> with 23+ years of industry experience.</p>
+                        
+                        <div class="feature-box">
+                            <h4>Core Services</h4>
+                            <ul>
+                                <li><span class="highlight">Freight Brokerage:</span> Connecting shippers with reliable carriers</li>
+                                <li><span class="highlight">Freight Forwarding:</span> Streamlining import/export between ports</li>
+                                <li><span class="highlight">Supply Chain:</span> Warehousing, transportation operations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="transition-element">
+                        <h3>Organization Details</h3>
+                        <div class="feature-box">
+                            <h4>Current Systems</h4>
+                            <ul>
+                                <li>Excel spreadsheets</li>
+                                <li>AscendTMS.com</li>
+                                <li>LACRM.com</li>
+                                <li>Quickbooks</li>
+                                <li>PDF Editor, RingCentral, Invoice Maker</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="transition-element">
+                        <h3>User Breakdown</h3>
+                        <ul>
+                            <li><span class="highlight">Internal Users:</span> ~20 staff members across roles</li>
+                            <li><span class="highlight">External Users:</span> 110+ drivers/clients and growing</li>
+                            <li><span class="highlight">Growth Projection:</span> Consistently growing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="quote transition-element">
+                "<b>Company Vision:</b> We believe the future of logistics is smarter, faster, and more sustainable. By combining decades of expertise with innovative solutions, we're redefining what's possible in the transportation industry."
+            </div>
+        </div>
+
+        <!-- Slide 4: Scope of Work for Phase 1 -->
+        <div class="slide">
+            <h2 class="transition-element">Phase 1 Scope of Work</h2>
+            <div class="transition-element">
+                <h3>1. Database Architecture</h3>
+                <ul>
+                    <li>Designing and structuring the database to support the application's core.</li>
+                    <li>Creation of the essential database tables:
+                        <ul>
+                            <li><span class="highlight">Users</span> (Clients, Agents, Drivers, Accounting Team)</li>
+                            <li><span class="highlight">Invoices</span> (For billing and financial records)</li>
+                            <li><span class="highlight">Loads</span> (Tracking shipments and assignments)</li>
+                            <li><span class="highlight">Authentication Logs</span> (User login history for security tracking)</li>
+                        </ul>
+                    </li>
+                    <li>Establishing relationships between the tables.</li>
+                </ul>
+            </div>
+            
+            <div class="transition-element">
+                <h3>2. Oracle APEX Portal Development</h3>
+                <ul>
+                    <li><span class="highlight">User Authentication System:</span>
+                        <ul>
+                            <li>Implementing a secure login mechanism for different user roles.</li>
+                            <li>Session management and logout functionality.</li>
+                        </ul>
+                    </li>
+                    <li><span class="highlight">Client Dashboard (Invoice Viewer):</span>
+                        <ul>
+                            <li>Building the dashboard for clients to log in and view their invoices.</li>
+                            <li>Simple, user-friendly interface with filtering options.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="transition-element">
+                <h3>3. Security & Performance Enhancements</h3>
+                <ul>
+                    <li>User authentication with encryption for secure access.</li>
+                    <li>Data validation and error handling to prevent unauthorized actions.</li>
+                    <li>Optimized queries and indexing for system performance.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 5: Oracle Cloud Infrastructure -->
+        <div class="slide">
+            <h2 class="transition-element">Oracle Cloud Infrastructure (OCI)</h2>
+            <div class="two-columns">
+                <div class="column">
+                    <div class="transition-element">
+                        <h3>Hosting Solution Planning</h3>
+                        <div class="feature-box">
+                            <h4>Current Status</h4>
+                            <p>We're actively collaborating with the Oracle Cloud team to determine the optimal hosting configuration for your Transport Management System.</p>
+                        </div>
+                        <div class="feature-box">
+                            <h4>Key Benefits of OCI</h4>
+                            <ul>
+                                <li>Enterprise-grade security and compliance</li>
+                                <li>Scalable resources to accommodate your growth</li>
+                                <li>High availability and disaster recovery</li>
+                                <li>Predictable performance for business-critical applications</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="transition-element">
+                        <h3>Next Steps with Oracle</h3>
+                        <div class="feature-box">
+                            <h4>Oracle Consultation</h4>
+                            <ul>
+                                <li>Meeting scheduled for Thursday, April 10</li>
+                                <li>Discussion of specific requirements and user metrics</li>
+                                <li>Detailed cost analysis for different tiers</li>
+                                <li>Deployment strategy recommendations</li>
+                            </ul>
+                        </div>
+                        <div class="feature-box">
+                            <h4>Post-Consultation Deliverables</h4>
+                            <ul>
+                                <li>Detailed hosting recommendation report</li>
+                                <li>Infrastructure cost breakdown</li>
+                                <li>Environment provisioning timeline</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="quote transition-element">Phase 1 development can begin immediately while cloud infrastructure decisions are being finalized.</p>
+        </div>
+
+        <!-- Slide 6: Timeline -->
+        <div class="slide">
+            <h2 class="transition-element">Implementation Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item transition-element">
+                    <div class="timeline-content">
+                        <h3>Week 1: Database Architecture</h3>
+                        <ul>
+                            <li>Database schema design and documentation</li>
+                            <li>Creation of core tables (Users, Invoices, Loads, Auth Logs)</li>
+                            <li>Establishment of table relationships and constraints</li>
+                            <li><span class="emphasis">Deliverable:</span> Completed database foundation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item transition-element">
+                    <div class="timeline-content">
+                        <h3>Weeks 2-3: APEX Portal Development</h3>
+                        <ul>
+                            <li>Authentication system implementation</li>
+                            <li>Client invoice viewer interface development</li>
+                            <li>Session management and security implementation</li>
+                            <li><span class="emphasis">Deliverable:</span> Functional login portal and basic dashboards</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item transition-element">
+                    <div class="timeline-content">
+                        <h3>Week 4: Security & Performance</h3>
+                        <ul>
+                            <li>Secure credential storage implementation</li>
+                            <li>Performance testing and optimization</li>
+                            <li>User acceptance testing support</li>
+                            <li><span class="emphasis">Deliverable:</span> Production-ready Phase 1 system</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="feature-box transition-element">
+                <h4>Key Milestones</h4>
+                <ul>
+                    <li><span class="highlight">End of Week 1:</span> Database schema review and approval</li>
+                    <li><span class="highlight">End of Week 3:</span> Functional demonstration of APEX portal</li>
+                    <li><span class="highlight">End of Week 4:</span> Phase 1 completion and handover</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 7: Payment Schedule -->
+        <div class="slide">
+            <h2 class="transition-element">Payment Schedule</h2>
+            <div class="two-columns">
+                <div class="column">
+                    <div class="transition-element">
+                        <h3>Proposed Payment Structure</h3>
+                        <div class="feature-box">
+                            <h4>Three-Stage Payment</h4>
+                            <ul>
+                                <li><span class="highlight">25% upon project initiation</span><br>Due before development begins</li>
+                                <li><span class="highlight">25% at midpoint milestone</span><br>Due after database architecture completion</li>
+                                <li><span class="highlight">50% upon project completion</span><br>Due after final delivery and acceptance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="transition-element">
+                        <h3>Additional Considerations</h3>
+                        <div class="feature-box">
+                            <h4>Scope Management</h4>
+                            <ul>
+                                <li>Change requests outside original scope subject to additional fees</li>
+                                <li>Hourly rate for additional work to be agreed upon</li>
+                                <li>All changes will be documented with cost estimates before implementation</li>
+                            </ul>
+                        </div>
+                        <div class="feature-box">
+                            <h4>Note</h4>
+                            <p>This payment structure is open for discussion and can be adjusted to align with your business processes and preferences.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="quote transition-element">Oracle Cloud Infrastructure costs will be billed separately based on the selected configuration after Thursday's consultation.</p>
+        </div>
+
+        <!-- Slide 8: Q&A -->
+        <div class="slide">
+            <h2 class="transition-element">Questions & Answers</h2>
+            <div class="feature-box transition-element">
+                <h4>Project Recap</h4>
+                <ul>
+                    <li>Phase 1 focuses on establishing the foundation for your Transport Management System</li>
+                    <li>Core deliverables include database architecture, APEX portal, and security implementation</li>
+                    <li>Estimated timeline: 3-4 weeks from project initiation</li>
+                    <li>Oracle Cloud infrastructure details to be finalized after Thursday's meeting</li>
+                </ul>
+            </div>
+            <div class="transition-element">
+                <h3>What questions do you have about:</h3>
+                <ul>
+                    <li>Technical implementation approach?</li>
+                    <li>Timeline or milestones?</li>
+                    <li>Specific functionality requirements?</li>
+                    <li>Next steps in the process?</li>
+                </ul>
+            </div>
+            <div class="footer transition-element">
+                <div><b>Technical Dev:</b> Mudassir Khalid | mudassirkhalid381@gmail.com</div>
+                <div><b>Consultant:</b> Ali Naveed | ali.naveed@thedigitalera.ca</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-button" id="prev">Previous</button>
+        <button class="nav-button" id="next">Next</button>
+    </div>
+    <div class="slide-number" id="slide-number">Slide 1 of 8</div>
+
+    <script>
+        let slideIndex = 1;
+        let currentElementIndex = 0;
+        let slides = document.getElementsByClassName('slide');
+        let clickOutsideToAdvance = true; // Set to false if you want only button navigation
+        
+        // Initialize
+        showSlide(slideIndex);
+        
+        // Get all transition elements on the current slide
+        function getTransitionElements() {
+            return slides[slideIndex-1].querySelectorAll('.transition-element:not(.visible)');
+        }
+        
+        // Show an element by adding the visible class
+        function showElement(element) {
+            element.classList.add('visible');
+        }
+        
+        // Reveal the next element in the current slide
+        function revealNextElement() {
+            const elements = getTransitionElements();
+            if (elements.length > 0) {
+                showElement(elements[0]);
+                return true;
+            }
+            return false;
+        }
+        
+        // Reset all elements on a slide to hidden
+        function resetSlideElements(slideIndex) {
+            // Skip for the title slide
+            if (slideIndex === 1) return;
+            
+            const elements = slides[slideIndex-1].querySelectorAll('.transition-element');
+            elements.forEach(element => {
+                element.classList.remove('visible');
+            });
+        }
+        
+        // Handle next button click
+        document.getElementById('next').addEventListener('click', () => {
+            // If there are still hidden elements on this slide, show the next one
+            if (!revealNextElement()) {
+                // Otherwise, go to the next slide
+                showSlide(slideIndex += 1);
+            }
+        });
+        
+        // Handle previous button click
+        document.getElementById('prev').addEventListener('click', () => {
+            showSlide(slideIndex -= 1);
+        });
+        
+        // Handle clicks on the slide itself
+        document.querySelector('.slideshow-container').addEventListener('click', (e) => {
+            // Only process if it's a direct click on the slide (not on a button)
+            if (clickOutsideToAdvance && !e.target.closest('.nav-button')) {
+                if (!revealNextElement()) {
+                    showSlide(slideIndex += 1);
+                }
+            }
+        });
+        
+        // Show slide function
+        function showSlide(n) {
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            
+            // Hide all slides
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove('active');
+            }
+            
+            // Show the current slide
+            slides[slideIndex-1].classList.add('active');
+            
+            // Reset elements for the new slide (except title slide)
+            resetSlideElements(slideIndex);
+            
+            // For title slide, show all elements immediately
+            if (slideIndex === 1) {
+                const elements = slides[0].querySelectorAll('.transition-element');
+                elements.forEach(element => {
+                    element.classList.add('visible');
+                });
+            } else {
+                // Show the slide title immediately for non-title slides
+                const titleElement = slides[slideIndex-1].querySelector('h2.transition-element');
+                if (titleElement) {
+                    titleElement.classList.add('visible');
+                }
+            }
+            
+            // Update slide number display
+            document.getElementById('slide-number').textContent = `Slide ${slideIndex} of ${slides.length}`;
+        }
+    </script>
+</body>
+</html>
